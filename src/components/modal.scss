@@ -1,0 +1,41 @@
+.modal {
+  border: 2px solid green;
+  background-color: palevioletred;
+  border-radius: 80px;
+  box-shadow: 10px 10px #335533;
+  width: 70vw;
+  height: 70vh;
+  z-index: 9999;
+  overflow: hidden;
+  .modalContent {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-items: space-around;
+    padding: 10px;
+    .closeModal {
+      width: 50px;
+      // background-color: transparent;
+      border: none;
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      align-self: flex-start;
+      color: white;
+      &:hover {
+        background-color: transparent;
+        color: red;
+      }
+    }
+  }
+}
+
+.modalCover {
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+}
