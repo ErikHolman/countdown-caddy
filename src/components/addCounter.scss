@@ -1,5 +1,6 @@
 .add-counter {
   width: 200px;
+  cursor: pointer;
   height: 300px;
   border: 2px solid red;
   display: flex;
@@ -8,4 +9,9 @@
   color: white;
   background-color: #777 !important;
   border-color: transparent !important;
+}
+@media only screen and (min-width: 768px) {
+  .add-counter:hover {
+    transform: scale(1.1);
+  }
 }
