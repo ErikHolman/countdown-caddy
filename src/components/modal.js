@@ -1,6 +1,9 @@
 import './modal.scss';
+import { useState } from 'react';
 
 function Modal({ props }) {
+  const [isVisible, setIsVisible] = useState(props.modalVisible);
+
   let modalText = props.modalInfo.modalText
     ? props.modalInfo.modalText
     : 'default text';
@@ -8,22 +11,27 @@ function Modal({ props }) {
     ? props.modalInfo.modalTitle
     : 'default title';
 
-  const closeModal = () => {};
+  const closeModal = () => {
+    setIsVisible(false);
+  };
 
-  console.log(props.modalVisible);
   return (
     <>
-      <div className='modalCover' />
-      <div className='modal'>
-        <div className='modalContent'>
-          <button className='closeModal' onClick={closeModal}>
-            X
-          </button>
-          <h2>{modalTitle}</h2>
-          <br />
-          <span>{modalText}</span>
+      {isVisible && (
+        <div>
+          <div className='modal'>
+            <div className='modalContent'>
+              <button className='closeModal' onClick={closeModal}>
+                X
+              </button>
+              <h2>{modalTitle}</h2>
+              <br />
+              <span>{modalText}</span>
+            </div>
+          </div>
+          <div className='modalCover' />
         </div>
-      </div>
+      )}
     </>
   );
 }

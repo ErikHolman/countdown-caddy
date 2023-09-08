@@ -1,12 +1,17 @@
 import './menu.scss';
 import Modal from './modal';
+import { useState } from 'react';
 
 function Menu() {
+  const [modalVisible, setModalVisible] = useState(false);
+
   const hamburgerMenu = () => {
-    alert('button clicked');
+    setModalVisible(true);
+    console.log('menuBtn ', modalVisible);
   };
 
   const githubLink = 'https://github.com/ErikHolman';
+
   const modalInfo = {
     modalTitle: '',
     modalText:
@@ -14,8 +19,6 @@ function Menu() {
       '   NEWLINE SOMEHOW   ' +
       `But also, this was created by Erik Holman ${githubLink}`,
   };
-
-  let modalVisible = false;
 
   return (
     <>
@@ -29,7 +32,7 @@ function Menu() {
           </button>
         </div>
       </div>
-      {/* <Modal props={{ modalInfo, modalVisible }} /> */}
+      <Modal props={{ modalInfo, modalVisible }} />
     </>
   );
 }
