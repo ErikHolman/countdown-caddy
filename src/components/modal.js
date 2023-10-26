@@ -1,35 +1,29 @@
 import './modal.scss';
-import { useState } from 'react';
+import Blocker from './blocker';
 
-function Modal({ props }) {
-  const [isVisible, setIsVisible] = useState(props.modalVisible);
-
-  let modalText = props.modalInfo.modalText
-    ? props.modalInfo.modalText
+function Modal({ modalInfo, modalVisible, closeModal }) {
+  let currentModalText = modalInfo.modalText
+    ? modalInfo.modalText
     : 'default text';
-  let modalTitle = props.modalInfo.modalTitle
-    ? props.modalInfo.modalTitle
+  let currentModalTitle = modalInfo.modalTitle
+    ? modalInfo.modalTitle
     : 'default title';
-
-  const closeModal = () => {
-    setIsVisible(false);
-  };
 
   return (
     <>
-      {isVisible && (
+      {modalVisible && (
         <div>
+          <Blocker />
           <div className='modal'>
             <div className='modalContent'>
               <button className='closeModal' onClick={closeModal}>
                 X
               </button>
-              <h2>{modalTitle}</h2>
+              <h2>{currentModalTitle}</h2>
               <br />
-              <span>{modalText}</span>
+              <div>{currentModalText}</div>
             </div>
           </div>
-          <div className='modalCover' />
         </div>
       )}
     </>

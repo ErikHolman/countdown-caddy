@@ -6,11 +6,10 @@
   width: 70vw;
   height: 70vh;
   overflow: hidden;
-  display: flex;
-  align-self: center;
-  justify-self: center;
+  position: absolute;
+  display: block;
   clear: both;
-  z-index: 500;
+  z-index: 9999;
   .modalContent {
     z-index: 500;
     display: flex;
@@ -20,7 +19,7 @@
     padding: 10px;
     .closeModal {
       width: 50px;
-      // background-color: transparent;
+      background-color: transparent;
       border: none;
       display: flex;
       flex-wrap: nowrap;
@@ -33,15 +32,4 @@
       }
     }
   }
-}
-
-.modalCover {
-  z-index: 50;
-  height: 100%;
-  width: 100%;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0.6);
 }

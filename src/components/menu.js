@@ -5,20 +5,21 @@ import { useState } from 'react';
 function Menu() {
   const [modalVisible, setModalVisible] = useState(false);
 
+  let modalInfo = {};
+
   const hamburgerMenu = () => {
+    modalInfo = {
+      modalTitle: '',
+      modalText: `You're right, a hamburger ✨DOES✨ sound good right now. But also, this was created by Erik Holman ${githubLink}`,
+    };
     setModalVisible(true);
-    console.log('menuBtn ', modalVisible);
+  };
+
+  const closeHamburgerMenu = () => {
+    setModalVisible(false);
   };
 
   const githubLink = 'https://github.com/ErikHolman';
-
-  const modalInfo = {
-    modalTitle: '',
-    modalText:
-      "You're right, a hamburger ✨DOES✨ sound good right now." +
-      '   NEWLINE SOMEHOW   ' +
-      `But also, this was created by Erik Holman ${githubLink}`,
-  };
 
   return (
     <>
@@ -32,7 +33,11 @@ function Menu() {
           </button>
         </div>
       </div>
-      <Modal props={{ modalInfo, modalVisible }} />
+      <Modal
+        modalVisible={modalVisible}
+        modalInfo={modalInfo}
+        closeModal={closeHamburgerMenu}
+      />
     </>
   );
 }

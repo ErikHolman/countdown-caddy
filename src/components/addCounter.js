@@ -1,20 +1,31 @@
 import './addCounter.scss';
+import { useState } from 'react';
 import Modal from './modal';
 
 function Addcounter() {
-  const modalInfo = {
-    modalTitle: 'realTitles',
-    modalText: 'Some real text',
-  };
-
-  let modalVisible = false;
+  const [isVisible, setIsVisible] = useState(false);
+  let modalInfo = {};
 
   const addForm = () => {
-    modalVisible = !modalVisible;
+    modalInfo = {
+      modalTitle: 'Yay!',
+      modalText: 'This is set by the form being created',
+    };
+    setIsVisible(true);
+  };
+
+  const closeModal = (state) => {
+    setIsVisible(false);
+    modalInfo = {};
   };
 
   return (
     <>
+      <Modal
+        modalInfo={modalInfo}
+        modalVisible={isVisible}
+        closeModal={closeModal}
+      />
       <div
         className='add-counter counter'
         title='Add a countdown'
@@ -22,7 +33,6 @@ function Addcounter() {
       >
         <h1>+</h1>
       </div>
-      {/* <Modal props={{ modalInfo, modalVisible }} /> */}
     </>
   );
 }
