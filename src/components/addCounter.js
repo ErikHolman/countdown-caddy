@@ -1,35 +1,17 @@
 import './addCounter.scss';
-import { useState } from 'react';
-import Modal from './modal';
 
-function Addcounter() {
-  const [isVisible, setIsVisible] = useState(false);
-  let modalInfo = {};
-
-  const addForm = () => {
-    modalInfo = {
-      modalTitle: 'Yay!',
-      modalText: 'This is set by the form being created',
-    };
-    setIsVisible(true);
-  };
-
-  const closeModal = (state) => {
-    setIsVisible(false);
-    modalInfo = {};
+function Addcounter(props) {
+  let modalInfo = {
+    modalTitle: 'Add Counter',
+    modalText: 'This will become logic to create a new counter.',
   };
 
   return (
     <>
-      <Modal
-        modalInfo={modalInfo}
-        modalVisible={isVisible}
-        closeModal={closeModal}
-      />
       <div
         className='add-counter counter'
         title='Add a countdown'
-        onClick={addForm}
+        onClick={props.openModal}
       >
         <h1>+</h1>
       </div>

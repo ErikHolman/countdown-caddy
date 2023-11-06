@@ -2,7 +2,7 @@ import './content.scss';
 import Counter from './counter';
 import Addcounter from './addCounter';
 
-function Content() {
+function Content(props) {
   const countdowns = [
     {
       title: 'My Birthday',
@@ -31,12 +31,12 @@ function Content() {
               <br />
               Add one?
             </h3>
-            <Addcounter />
+            <Addcounter {...props} />
           </div>
         ) : (
           <div>
             <h3>Cool, there are {countdowns.length} countdowns</h3>
-            <Counter props={countdowns} />
+            <Counter countdownInfo={countdowns} {...props} />
           </div>
         )}
       </div>

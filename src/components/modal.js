@@ -1,13 +1,11 @@
 import './modal.scss';
 import Blocker from './blocker';
 
-function Modal({ modalInfo, modalVisible, closeModal }) {
-  let currentModalText = modalInfo.modalText
-    ? modalInfo.modalText
-    : 'default text';
-  let currentModalTitle = modalInfo.modalTitle
-    ? modalInfo.modalTitle
-    : 'default title';
+function Modal(props) {
+  let currentModalText = props.modalInfo.modalText;
+  let currentModalTitle = props.modalInfo.modalTitle;
+
+  let modalVisible = props.modalVisible;
 
   return (
     <>
@@ -16,12 +14,12 @@ function Modal({ modalInfo, modalVisible, closeModal }) {
           <Blocker />
           <div className='modal'>
             <div className='modalContent'>
-              <button className='closeModal' onClick={closeModal}>
+              <button className='closeModal' onClick={props.closeModal}>
                 X
               </button>
-              <h2>{currentModalTitle}</h2>
+              <h2>{currentModalText}</h2>
               <br />
-              <div>{currentModalText}</div>
+              <div>{currentModalTitle}</div>
             </div>
           </div>
         </div>

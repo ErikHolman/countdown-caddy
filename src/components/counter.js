@@ -1,8 +1,8 @@
 import './counter.scss';
 import Addcounter from './addCounter';
 
-function Counter({ props }) {
-  let countdowns = props;
+function Counter(props) {
+  let countdowns = props.countdownInfo;
   return (
     <div className='countdowns'>
       {countdowns.map((counter, index) => {
@@ -28,7 +28,7 @@ function Counter({ props }) {
           </div>
         );
       })}
-      <Addcounter />
+      <Addcounter {...props} />
     </div>
   );
 }
