@@ -32,9 +32,7 @@ jobs:
         with:
           node-version: '19'
       - run: npm install -g bats
-      - run: echo 'NPM install complete'
-      - run: npm build
-      - run: echo 'Build complete'
+      - run: npm run build
 
   # Deployment job
   deploy:
