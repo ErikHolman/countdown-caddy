@@ -9,10 +9,10 @@ A silly little project that may turn into a Chrome 'new tab' type extension.
 <details>
   <summary><b>Interface</b></summary>
   <blockquote>
-    &#9989; Base layout<br/>
-    &#9989; Add countdowns button<br/>
-    &#9989; Standard countdown<br/>
-    &#9989; Countdown with image<br/>
+    &#11036; Base layout<br/>
+    &#11036; Add countdowns button<br/>
+    &#11036; Standard countdown<br/>
+    &#11036; Countdown with image<br/>
     &#11036; Drag reorder countdowns<br/>
     &#11036; Remove countdowns<br/>
     &#11036; Info about how countdowns are stored<br/>
