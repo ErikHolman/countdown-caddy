@@ -1,19 +1,6 @@
-import {
-  FluentProvider,
-  webLightTheme,
-  makeStyles,
-  Button,
-  Card,
-  CardHeader,
-  CardFooter,
-  Text,
-  Caption1,
-  tokens,
-  shorthands,
-} from '@fluentui/react-components';
-import { MoreHorizontal20Regular } from '@fluentui/react-icons';
-import * as React from 'react';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 import Header from './components/header';
+import Body from './components/body';
 
 /* --
 
@@ -67,76 +54,12 @@ General UI
 
 
 -- */
-const useStyles = makeStyles({
-  main: {
-    ...shorthands.gap('36px'),
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-  },
-  card: {
-    width: '250px',
-    maxWidth: '100%',
-    height: 'fit-content',
-    minHeight: '400px;',
-  },
-  caption: {
-    color: tokens.colorNeutralForeground3,
-  },
-});
 
 export default function App() {
-  const countdowns = [
-    {
-      title: 'My Birthday',
-      date: ' Jan 11, 2634',
-      color: '#000000',
-      format: 'mdhs',
-      remaining: '75',
-      image: '',
-    },
-    {
-      title: 'Vacay!',
-      date: ' July 11, 2634',
-      color: '#000000',
-      format: 'd',
-      remaining: '234',
-      image: 'pic',
-    },
-  ];
-
-  const styles = useStyles();
-
   return (
     <FluentProvider theme={webLightTheme}>
       <Header />
-      <div className={styles.main}>
-        {countdowns.map((counter, index) => {
-          return (
-            <Card className={styles.card} key={index}>
-              <CardHeader
-                header={<Text weight='semibold'>{counter.title}</Text>}
-                description={
-                  <Caption1 className={styles.caption}>
-                    {counter.date} {index + 1}
-                  </Caption1>
-                }
-                action={
-                  <Button
-                    appearance='transparent'
-                    icon={<MoreHorizontal20Regular />}
-                    aria-label='More actions'
-                  />
-                }
-              />
-              <CardFooter>
-                <Text weight='medium'>{counter.remaining} days left!</Text>
-              </CardFooter>
-            </Card>
-          );
-        })}
-      </div>
+      <Body />
     </FluentProvider>
   );
 }
