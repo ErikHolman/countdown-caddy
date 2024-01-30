@@ -1,6 +1,6 @@
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
 name: Deploy Jekyll with GitHub Pages dependencies preinstalled
-run-name: @${{ github.actor }} built the site
+run-name: ${{ github.actor }} built the site
 
 on:
   # Runs on pushes targeting the default branch
