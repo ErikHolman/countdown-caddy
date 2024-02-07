@@ -1,31 +1,10 @@
 // imports
-import {
-  makeStyles,
-  Button,
-  Card,
-  CardHeader,
-  CardFooter,
-  Text,
-  Caption1,
-  tokens,
-  shorthands,
-} from '@fluentui/react-components';
-import { MoreHorizontal20Regular } from '@fluentui/react-icons';
-import * as React from 'react';
+import { makeStyles, shorthands, Spinner } from '@fluentui/react-components';
 import { useState } from 'react';
-import Loader from '../components/loader';
+import Counter from '../components/counter';
 
 // functions
 const useStyles = makeStyles({
-  card: {
-    width: '250px',
-    maxWidth: '100%',
-    height: 'fit-content',
-    minHeight: '400px;',
-  },
-  caption: {
-    color: tokens.colorNeutralForeground3,
-  },
   content: {
     ...shorthands.gap('36px'),
     display: 'flex',
@@ -38,6 +17,12 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+  },
+  loading: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent: 'space-around',
+    textAlign: 'center',
   },
   main: {
     ...shorthands.gap('36px'),
@@ -57,8 +42,18 @@ export default function Body() {
 
   const dummyUpMyData = () => {
     setCountdowns([
-      { title: 'sample 1', date: 'tomorrow' },
-      { title: 'sample 2', date: 'yesterday' },
+      {
+        title: 'sample 1',
+        date: 'tomorrow',
+        caption: 'This is the event',
+        remaining: '>1',
+      },
+      {
+        title: 'sample 2',
+        date: 'yesterday',
+        caption: 'This is the event',
+        remaining: '-1',
+      },
     ]);
   };
 
@@ -79,8 +74,12 @@ export default function Body() {
     <div className={styles.main}>
       <div className={styles.content}>
         {isLoading && (
-          <div>
-            <Loader />
+          <div className={styles.loading}>
+            <Spinner />
+            <h1>Locating the countdowns...</h1>
+            <h3>🤔 I know they're around here somewhere 🤔</h3>
+            <strong>*sound of multiple bookshelves being knocked over*</strong>
+            <br />
             <button onClick={() => setIsLoading(false)}>click to stop</button>
           </div>
         )}
@@ -95,28 +94,7 @@ export default function Body() {
         {!isLoading &&
           countdowns.length > 0 &&
           countdowns.map((counter, index) => {
-            return (
-              <Card className={styles.card} key={index}>
-                <CardHeader
-                  header={<Text weight='semibold'>{counter.title}</Text>}
-                  description={
-                    <Caption1 className={styles.caption}>
-                      {counter.date} {index + 1}
-                    </Caption1>
-                  }
-                  action={
-                    <Button
-                      appearance='transparent'
-                      icon={<MoreHorizontal20Regular />}
-                      aria-label='More actions'
-                    />
-                  }
-                />
-                <CardFooter>
-                  <Text weight='medium'>{counter.remaining} days left!</Text>
-                </CardFooter>
-              </Card>
-            );
+            return <Counter counter={counter} index={index} key={index} />;
           })}
       </div>
       {!isLoading && countdowns.length > 0 && (

@@ -1,6 +1,6 @@
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
-import Header from './components/header';
-import Body from './components/body';
+import Header from './sections/header';
+import Body from './sections/body';
 
 /* --
 
