@@ -50,7 +50,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Counter(counter, index) {
+export default function Counter({ counter, index }) {
   const styles = useStyles();
 
   <div>

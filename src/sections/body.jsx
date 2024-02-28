@@ -94,7 +94,7 @@ export default function Body() {
         {!isLoading &&
           countdowns.length > 0 &&
           countdowns.map((counter, index) => {
-            return <Counter counter={counter} index={index} key={index} />;
+            return <Counter counter={counter} key={index} />;
           })}
       </div>
       {!isLoading && countdowns.length > 0 && (
