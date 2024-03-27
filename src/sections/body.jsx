@@ -11,6 +11,8 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    height: '100%',
+    border: '2px solid red',
   },
   footer: {
     ...shorthands.gap('36px'),
@@ -43,16 +45,18 @@ export default function Body() {
   const dummyUpMyData = () => {
     setCountdowns([
       {
-        title: 'sample 1',
-        date: 'tomorrow',
+        title: 'Vacation',
+        date: 'April 7, 2024',
         caption: 'This is the event',
-        remaining: '>1',
+        remaining: '14',
+        countUnit: 'days',
       },
       {
-        title: 'sample 2',
-        date: 'yesterday',
+        title: "Mom's Birthday",
+        date: 'March 14, 2024',
         caption: 'This is the event',
-        remaining: '-1',
+        remaining: '-400',
+        countUnit: 'hours',
       },
     ]);
   };
@@ -94,7 +98,7 @@ export default function Body() {
         {!isLoading &&
           countdowns.length > 0 &&
           countdowns.map((counter, index) => {
-            return <Counter counter={counter} key={index} />;
+            return <Counter counter={counter} index={index} key={index} />;
           })}
       </div>
       {!isLoading && countdowns.length > 0 && (

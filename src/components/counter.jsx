@@ -17,6 +17,9 @@ const useStyles = makeStyles({
     maxWidth: '100%',
     height: 'fit-content',
     minHeight: '400px;',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   caption: {
     color: tokens.colorNeutralForeground3,
@@ -29,10 +32,9 @@ const useStyles = makeStyles({
     justifyContent: 'center',
   },
   footer: {
-    ...shorthands.gap('36px'),
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
   },
   loading: {
     display: 'flex',
@@ -48,31 +50,46 @@ const useStyles = makeStyles({
     alignContent: 'space-around',
     paddingTop: '2em',
   },
+  missedEvent: {
+    color: 'red',
+    fontWeight: 'bolder',
+  },
 });
 
 export default function Counter({ counter, index }) {
   const styles = useStyles();
 
-  <div>
-    <Card className={styles.card}>
-      <CardHeader
-        header={<Text weight='semibold'>{counter.title}</Text>}
-        description={
-          <Caption1 className={styles.caption}>
-            {counter.date} {index + 1}
-          </Caption1>
-        }
-        action={
-          <Button
-            appearance='transparent'
-            icon={<MoreHorizontal20Regular />}
-            aria-label='More actions'
-          />
-        }
-      />
-      <CardFooter>
-        <Text weight='medium'>{counter.remaining} days left!</Text>
-      </CardFooter>
-    </Card>
-  </div>;
+  return (
+    <div>
+      <Card className={styles.card}>
+        <CardHeader
+          header={<Text weight='semibold'>{counter.title}</Text>}
+          description={
+            <Caption1 className={styles.caption}>{counter.date}</Caption1>
+          }
+          action={
+            <Button
+              appearance='transparent'
+              icon={<MoreHorizontal20Regular />}
+              aria-label='More actions'
+            />
+          }
+        />
+        <CardFooter>
+          <div>
+            {counter.remaining < 0 ? (
+              <Text className={styles.missedEvent} weight='medium'>
+                {counter.remaining} {counter.countUnit} since event.
+              </Text>
+            ) : (
+              <Text weight='medium'>
+                {counter.remaining} {counter.countUnit} left!
+              </Text>
+            )}
+          </div>
+          <div>{index}</div>
+        </CardFooter>
+      </Card>
+    </div>
+  );
 }
